@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<br><br>
+<h2 align = "center">Registration Form</h2>
+<br><br>
+<div class="row">
+    <form name = "DetailsForm">
+        <div id="panel">
+            <table  align="center" cellpadding="10">
+                <tr><td>First Name :</td><td><input class="form-control" id = "fname" type="text" title="Minimum 5 letters" required placeholder="Enter the First name"  pattern="[a-zA-Z]{5,}" autofocus/></td></tr>
+                <tr><td>Last Name:</td><td><input class="form-control" id = "lname" type="text" title="Minimum 5 letters" required placeholder="Enter the Last Name"  pattern="[a-zA-Z]{5,}" autofocus/></td></tr>
+                <tr><td>Email-Id:</td><td><input class="form-control" id = "mailid" type="email"  required placeholder="Enter the Email-id"  autofocus/></td></tr>
+                <tr><td>Mobile Number:</td><td><input class="form-control" id = "mobnum" type="text"  title="Other Characters are not allowed except numbers" required pattern="[0-9]{10}" placeholder="Mobile Number"  autofocus/></td></tr>
+                <tr><td><button id="button" class="btn btn-success" >Submit</button></td></tr>
+            </table>
+        </div>
+    </form>
+</div>
+<div id="textdata"></div>
+<br>
+<script type="text/javascript" src="example1_data.js"></script>
+<script type="text/javascript" src="example1.js"></script>
+</body>
+</html>
