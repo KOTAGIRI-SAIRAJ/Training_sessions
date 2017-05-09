@@ -1,0 +1,156 @@
+﻿
+Example – 1
+
+We can access the “this scope” in three ways
+
+There is a problem in this method
+
+class ClassName {
+  constructor(dir){
+    this.dir = dir;
+}
+aMethod() {
+    return aFun = function() {
+      alert(this.dir)          // Undefined because the scope of “this” varies 
+    }
+  }
+}
+var d = new ClassName("Name");
+var f = d.aMethod();
+console.log(f());
+
+In the above example I m unable to get the value “this.dir”. it is undefined so to overcome this problem. We have three ways to go through
+
+
+
+Approach 1
+
+Using an arrow function:
+
+class ClassName {
+  constructor(dir){
+    this.dir = dir;
+}
+aMethod() {
+    return aFun = () => {		//removed function and added => Arrow Function here
+      alert(this.dir)               //Name
+    }
+  }
+}
+var d = new ClassName("Name");
+var f = d.aMethod();
+console.log(f());
+
+Approach 2
+
+Using “this” and store that  “this:” in an another variable:
+
+class ClassName {
+  constructor(dir){
+    this.dir = dir;
+}
+aMethod() {
+var that = this   //the window reference this variable is stored in another var
+    return aFun = function()  {		
+      alert(that.dir)                               //Name
+    }
+  }
+}
+var d = new ClassName("Name");
+var f = d.aMethod();
+console.log(f());
+
+
+Approach 3
+
+We can Bind the method with this 
+
+class ClassName {
+  constructor(dir){
+    this.dir = dir;
+}
+aMethod() {
+    return aFun = function()  {		
+      alert(this.dir)              //Name
+    }.bind(this)	  			//bind the method with this
+   }
+}
+var d = new ClassName("Name");
+var f = d.aMethod();
+console.log(f());
+
+
+
+
+
+
+
+
+Example -2 
+
+In different places we can append values to “this”
+
+class ClassName {
+  
+  constructor(public dir) {
+				// Added dir variable using construcor
+    
+  }
+  aMethod(this): any {
+    var t  =  () => {
+      this.d = 10    		// Added d variable to “this” in nested Function
+      return this;
+    }
+    t()				//calling t method
+    this.k = "title";		// Added k variable to “this” in Function
+    return this;
+  }
+}
+var d = new ClassName("Name");
+var f = d.aMethod();
+console.log(f.dir,f.d,f.dir);     	//output:        Name 10  title
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example 3
+
+Inheritance concept and calling the Super Methods 
+
+
+class Strclass  {
+  constructor(public a: string,public b:string) { }
+  getFullString = (c: string): string => {
+    return this.a + this.b+ c;
+  }
+}
+class extendsStrclass extends Strclass{
+  private superString = this.getFullString;
+  getFullString = (b: string): string => {
+    return this.superString(b);
+  }
+}
+class newExtendedclass extends extendsStrclass{ 
+  private newSuperString = this.getFullString;
+  getFullString = (c: string): string => {
+    return this.newSuperString(c);
+  }
+}
+let a = new newExtendedclass("Sai ","Raj ");
+let b = a.getFullString("kotagiri");
+alert(b);
+
+
+
